@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>UE5教程-通过一个TopDown案例快速入门虚幻蓝图-1 | Hexo</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches)
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches)
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async src="//unpkg.com/valine/dist/Valine.min.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: '9fYD8gwmO8XjRZQkjAaWN04w-gzGzoHsz'
+ , appKey: 'C6wE7z3VO453yuhwgHVmkWdW' , placeholder: 'This comment is sent by Penguin Logistics.'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);document.addEventListener('pjax:success', _ => bszCaller.fetch(
+ "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
+  bszTag.texts(a),
+  bszTag.shows()
+}));reset()})</script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: '9fYD8gwmO8XjRZQkjAaWN04w-gzGzoHsz'
+ , appKey: 'C6wE7z3VO453yuhwgHVmkWdW' , placeholder: 'This comment is sent by Penguin Logistics.'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">档案</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>UE5教程-通过一个TopDown案例快速入门虚幻蓝图-1</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-11-18T02:41:13.000Z" id="date"> 2024-11-18</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-11-18T06:58:43.014Z" id="updated"> 2024-11-18</time></div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本教程通过一个俯视角游戏案例，让大家在边做游戏的同时，快速了解ue蓝图开发的部分功能。</p>
+<h2 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h2><p class='item-img' data-src='/images/ue5td1/1.1.png'><img src="/images/ue5td1/1.1.png" alt="1"><br>打开虚幻引擎，本教程的引擎版本是5.4.4，不过版本不同影响不大，选择自己喜欢的版本即可。<br>点击左侧 <code>游戏</code> 然后选择空白项目，接着更改右下角的项目默认设置，参数为 <code>蓝图/桌面/最大/（空）/（空）</code> ,最后设置项目名称，我的项目名为 <code>topdownrouge</code> ，最后选择项目位置，一定要确认保存路径为纯英文，不然会报错，点击创建，等待几秒钟，项目就建立好了。</p>
+<h2 id="编辑器界面介绍"><a href="#编辑器界面介绍" class="headerlink" title="编辑器界面介绍"></a>编辑器界面介绍</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/YCEykr/article/details/140637504">编辑器页面</a>这里就不多赘述了，大家想去了解的点击这个链接即可。</p>
+<h2 id="新建关卡"><a href="#新建关卡" class="headerlink" title="新建关卡"></a>新建关卡</h2><p>进入引擎后，由于我们项目为俯视角肉鸽，我们至少要制作两个地图，一个地图为游戏主界面，一个地图为游戏地图。在创建地图之前，我们先创建一个文件夹用来保存我们的地图。<br class='item-img' data-src='/images/ue5td1/2.1.png'><img src="/images/ue5td1/2.1.png" alt="1"><br>在内容管理器中右键新建文件夹，命名为 <code>map</code> 。<br class='item-img' data-src='/images/ue5td1/2.2.png'><img src="/images/ue5td1/2.2.png" alt="1"><br class='item-img' data-src='/images/ue5td1/2.3.png'><img src="/images/ue5td1/2.3.png" alt="1"><br>点击编辑器左上角的 <code>文件/新建关卡/空白关卡</code> ,创建好空白关卡后按ctrl+s保存关卡地图在 <code>map</code> 文件夹中，命名为 <code>Map_01</code>，同样的操作建立并保存linguistic一个关卡<code>Map_menu</code>。</p>
+<h2 id="修改项目设置"><a href="#修改项目设置" class="headerlink" title="修改项目设置"></a>修改项目设置</h2><h3 id="修改默认地图"><a href="#修改默认地图" class="headerlink" title="修改默认地图"></a>修改默认地图</h3><p class='item-img' data-src='/images/ue5td1/3.1.png'><img src="/images/ue5td1/3.1.png" alt="1"><br>点击引擎左上角 <code>编辑/项目设置/地图和模式</code>, <code>编辑器开始地图</code> 改为<code>Map_01</code>，<code>游戏默认地图</code>改为<code>Map_menu</code>。这样修改之后我们游戏导出之后的界面就会是我们的菜单地图，而我们打开引擎调试的默认地图则是游戏地图。</p>
+<h3 id="其他设置"><a href="#其他设置" class="headerlink" title="其他设置"></a>其他设置</h3><p class='item-img' data-src='/images/ue5td1/3.2.png'><img src="/images/ue5td1/3.2.png" alt="1"><br class='item-img' data-src='/images/ue5td1/3.3.png'><img src="/images/ue5td1/3.3.png" alt="1"><br>接着我们在项目设置界面上边栏搜索界面搜索 <code>动态模糊</code> 和 <code>抗锯齿方法</code> ，将动态模糊关闭，抗锯齿方法设置成无。<br>我们的游戏是2d游戏不需要动态模糊，因为是像素游戏，也不需要抗锯齿。</p>
+<h2 id="创建蓝图"><a href="#创建蓝图" class="headerlink" title="创建蓝图"></a>创建蓝图</h2><h3 id="游戏模式蓝图"><a href="#游戏模式蓝图" class="headerlink" title="游戏模式蓝图"></a>游戏模式蓝图</h3><p>蓝图是利用c++封装特性的，已经封装好的代码，是UE5最主要的编程方式，在创建蓝图之前，我们先在目录里创建文件夹 <code>blueprint</code> 用来保存蓝图类</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/11/18/Unity%E6%95%99%E7%A8%8B-%E4%BB%8EUnity%E5%85%A5%E9%97%A8%E5%88%B0UE%E7%B2%BE%E9%80%9A/">← Next Unity教程-从Unity入门到UE精通</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/11/15/%E8%85%BE%E8%AE%AF%E5%85%AC%E5%BC%80%E8%AF%BE%E2%80%94%E2%80%94%E5%85%A8%E7%90%83%E6%B8%B8%E6%88%8F%E5%B8%82%E5%9C%BA%E6%A6%82%E8%BF%B0%E7%AC%94%E8%AE%B0/">腾讯公开课———全球游戏市场概述笔记 Prev →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Dr.Muqiuwu</a></h1><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/muqiuwu"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="mailto:2689616582@qq.com"><i class="fa fa-envelope" alt="E-Mail"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/241623045?spm_id_from=333.1007.0.0"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">项目创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.</span> <span class="toc-text">编辑器界面介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E5%85%B3%E5%8D%A1"><span class="toc-number">4.</span> <span class="toc-text">新建关卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">修改项目设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E5%9C%B0%E5%9B%BE"><span class="toc-number">5.1.</span> <span class="toc-text">修改默认地图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%AE%BE%E7%BD%AE"><span class="toc-number">5.2.</span> <span class="toc-text">其他设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%93%9D%E5%9B%BE"><span class="toc-number">6.</span> <span class="toc-text">创建蓝图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E6%A8%A1%E5%BC%8F%E8%93%9D%E5%9B%BE"><span class="toc-number">6.1.</span> <span class="toc-text">游戏模式蓝图</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
