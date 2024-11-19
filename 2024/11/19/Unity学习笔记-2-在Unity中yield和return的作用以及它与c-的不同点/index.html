@@ -73,27 +73,27 @@ lightGallery(document.getElementById('post-bg'), {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">档案</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Unity学习笔记-2-在Unity中yield和return的作用以及它与c++的不同点</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-11-19T08:45:19.000Z" id="date"> 2024-11-19</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-11-19T08:47:30.022Z" id="updated"> 2024-11-19</time></div></span><br><span id="busuanzi_container_page_pv">页面浏览: <span class="control" id="busuanzi_value_page_pv">加载中...</span></span></div></div><hr><div id="post-content"><p>作者：朱恒希</p>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">档案</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Unity学习笔记-2-在Unity中yield和return的作用以及它与c++的不同点</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-11-19T08:45:19.000Z" id="date"> 2024-11-19</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-11-19T08:59:10.036Z" id="updated"> 2024-11-19</time></div></span><br><span id="busuanzi_container_page_pv">页面浏览: <span class="control" id="busuanzi_value_page_pv">加载中...</span></span></div></div><hr><div id="post-content"><p>作者：朱恒希</p>
 <span id="more"></span>
 <p>在 Unity 中使用 <code>yield</code> 和 <code>return</code> 是为了实现协程（Coroutine）的暂停和分步执行。这和 C++ 中的 <code>yield</code> 语法和行为有所不同。我们可以分析 Unity 中 <code>yield</code> 和 <code>return</code> 的区别和关系，以及为什么它们需要一起使用。</p>
-<h2 id="在-Unity-中，yield-和-return-的作用"><a href="#在-Unity-中，yield-和-return-的作用" class="headerlink" title="在 Unity 中，yield 和 return 的作用"></a><strong>在 Unity 中，<code>yield</code> 和 <code>return</code> 的作用</strong></h2><ul>
-<li><p>**<code>yield</code>**：用于暂停当前协程的执行，直到某个条件满足。它并不是返回一个结果，而是告诉 Unity 在未来的某个时间点继续执行当前的方法。</p>
+<h2 id="在-Unity-中，yield-和-return-的作用"><a href="#在-Unity-中，yield-和-return-的作用" class="headerlink" title="在 Unity 中，yield 和 return 的作用"></a><strong>在 Unity 中，yield 和 return 的作用</strong></h2><ul>
+<li><p><strong>yield</strong>：用于暂停当前协程的执行，直到某个条件满足。它并不是返回一个结果，而是告诉 Unity 在未来的某个时间点继续执行当前的方法。</p>
 </li>
-<li><p>**<code>return</code>**：在协程中，<code>return</code> 用于返回一个值或对象，告诉 Unity 如何继续执行协程。通常，<code>yield return</code> 会配合使用。</p>
+<li><p><strong>return</strong>：在协程中，<code>return</code> 用于返回一个值或对象，告诉 Unity 如何继续执行协程。通常，<code>yield return</code> 会配合使用。</p>
 </li>
 </ul>
-<h2 id="yield-与-return-配合使用的原因"><a href="#yield-与-return-配合使用的原因" class="headerlink" title="yield 与 return 配合使用的原因"></a><strong><code>yield</code> 与 <code>return</code> 配合使用的原因</strong></h2><p>在 Unity 的协程中，<code>yield</code> 关键字和 <code>return</code> 关键字并不是直接冲突的，它们是协作的：</p>
+<h2 id="yield-与-return-配合使用的原因"><a href="#yield-与-return-配合使用的原因" class="headerlink" title="yield 与 return 配合使用的原因"></a><strong>yield 与 return 配合使用的原因</strong></h2><p>在 Unity 的协程中，<code>yield</code> 关键字和 <code>return</code> 关键字并不是直接冲突的，它们是协作的：</p>
 <ul>
-<li><p>**<code>yield return</code>**：在 Unity 协程中，<code>yield</code> 是告诉协程暂停执行，而 <code>return</code> 则返回一个对象或条件，表示什么时候再继续执行。例如，<code>yield return new WaitForSeconds(2f)</code> 表示协程将在 2 秒后继续执行，Unity 会在 2 秒后恢复该协程的执行。</p>
+<li><p><strong>yield return</strong>：在 Unity 协程中，<code>yield</code> 是告诉协程暂停执行，而 <code>return</code> 则返回一个对象或条件，表示什么时候再继续执行。例如，<code>yield return new WaitForSeconds(2f)</code> 表示协程将在 2 秒后继续执行，Unity 会在 2 秒后恢复该协程的执行。</p>
 <ul>
-<li>**<code>yield return null</code>**：表示在下一帧继续执行。</li>
-<li>**<code>yield return new WaitForSeconds(2f)</code>**：表示暂停 2 秒。</li>
-<li>**<code>yield return new WaitUntil(() =&gt; someCondition)</code>**：表示暂停直到某个条件为 <code>true</code>。</li>
+<li><strong>yield return null</strong>：表示在下一帧继续执行。</li>
+<li>**yield return new WaitForSeconds(2f)**：表示暂停 2 秒。</li>
+<li>**yield return new WaitUntil(() &#x3D;&gt; someCondition)**：表示暂停直到某个条件为 <code>true</code>。</li>
 </ul>
 </li>
 </ul>
 <p>在 Unity 中，<code>yield return</code> 使得协程能够分阶段执行，避免阻塞主线程。</p>
-<h2 id="C-中的-yield-与-return-的区别"><a href="#C-中的-yield-与-return-的区别" class="headerlink" title="C++ 中的 yield 与 return 的区别"></a><strong>C++ 中的 <code>yield</code> 与 <code>return</code> 的区别</strong></h2><p>C++ 本身没有内建的协程机制，C++ 中的 <code>yield</code> 一般出现在 <strong>生成器</strong> 或 <strong>迭代器</strong> 中，通常用于产生一个序列的值，并且会把控制权交还给调用者。它和 C# 中的协程机制有所不同。在 C++ 中，<code>yield</code> 可能意味着暂停函数的执行，并将执行权交还给调用者，或者返回一个生成的值。</p>
+<h2 id="C-中的-yield-与-return-的区别"><a href="#C-中的-yield-与-return-的区别" class="headerlink" title="C++ 中的 yield 与 return 的区别"></a><strong>C++ 中的 yield 与 return 的区别</strong></h2><p>C++ 本身没有内建的协程机制，C++ 中的 <code>yield</code> 一般出现在 <strong>生成器</strong> 或 <strong>迭代器</strong> 中，通常用于产生一个序列的值，并且会把控制权交还给调用者。它和 C# 中的协程机制有所不同。在 C++ 中，<code>yield</code> 可能意味着暂停函数的执行，并将执行权交还给调用者，或者返回一个生成的值。</p>
 <p>C++ 的 <code>return</code> 语法用于返回一个函数的结果，它与 <code>yield</code> 并不共同使用。</p>
 <p>在 C# 和 Unity 中，<code>yield return</code> 的 <code>return</code> 并不是返回方法的结果，而是作为协程的机制，它表示一个暂停的操作，并指示协程应该何时恢复执行。因此，<code>yield</code> 和 <code>return</code> 必须一起使用，以完成协程的控制。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>在 Unity 中，<code>yield return</code> 用于实现协程的分步执行和暂停。<code>yield</code> 是告诉 Unity 暂停当前执行的协程，而 <code>return</code> 则指定了暂停的条件或延迟时间。C++ 中的 <code>yield</code> 和 <code>return</code> 不太相同，它们分别用于生成器的控制和函数结果的返回。</p>
